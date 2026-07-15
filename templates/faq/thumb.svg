@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" role="img" aria-label="FAQ preview">
+  <rect width="320" height="180" fill="#ffffff"/>
+  <g fill="#f1f5f9" stroke="#e2e8f0">
+    <rect x="40" y="34"  width="240" height="26" rx="6"/>
+    <rect x="40" y="68"  width="240" height="26" rx="6"/>
+    <rect x="40" y="102" width="240" height="26" rx="6"/>
+  </g>
+  <g fill="#334155" font-family="Arial, sans-serif" font-size="11">
+    <text x="54" y="51">What is included?</text>
+    <text x="54" y="85">How do I get started?</text>
+    <text x="54" y="119">Can I cancel anytime?</text>
+  </g>
+  <g fill="#2f74e6" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">
+    <text x="264" y="52">+</text>
+    <text x="264" y="86">+</text>
+    <text x="264" y="120">+</text>
+  </g>
+</svg>
