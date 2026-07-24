@@ -1,0 +1,52 @@
+{
+    "menu_item_style": "none",
+    "menu_link_color": {
+        "predefined": "",
+        "custom": ""
+    },
+    "menu_link_hover_color": {
+        "predefined": "",
+        "custom": ""
+    },
+    "menu_item_bg": {
+        "predefined": "",
+        "custom": ""
+    },
+    "menu_item_hover_bg": {
+        "predefined": "",
+        "custom": ""
+    },
+    "menu_link_padding_x": {
+        "value": "",
+        "unit": "rem"
+    },
+    "menu_link_padding_y": {
+        "value": "",
+        "unit": "rem"
+    },
+    "menu_dropdown_style": "classic",
+    "menu_dropdown_bg": {
+        "predefined": "",
+        "custom": ""
+    },
+    "menu_dropdown_link": {
+        "predefined": "",
+        "custom": ""
+    },
+    "menu_dropdown_link_hover": {
+        "predefined": "",
+        "custom": ""
+    },
+    "menu_dropdown_item_hover_bg": {
+        "predefined": "",
+        "custom": ""
+    },
+    "menu_dropdown_width": {
+        "value": "",
+        "unit": "px"
+    },
+    "menu_dropdown_radius": {
+        "value": "",
+        "unit": "px"
+    }
+}

@@ -1,0 +1,32 @@
+{
+    "count": "2",
+    "2": {
+        "post_footer_split": [
+            {
+                "w": 50,
+                "name": ""
+            },
+            {
+                "w": 50,
+                "name": ""
+            }
+        ],
+        "post_footer_col_1": [
+            {
+                "element_type": {
+                    "element": "menu_area",
+                    "menu_area": {
+                        "menu_location": "footer"
+                    }
+                }
+            }
+        ],
+        "post_footer_col_2": [
+            {
+                "element_type": {
+                    "element": "social_icons"
+                }
+            }
+        ]
+    }
+}

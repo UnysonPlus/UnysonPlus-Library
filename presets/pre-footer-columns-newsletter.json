@@ -1,0 +1,36 @@
+{
+    "count": "2",
+    "2": {
+        "pre_footer_split": [
+            {
+                "w": 67,
+                "name": ""
+            },
+            {
+                "w": 33,
+                "name": ""
+            }
+        ],
+        "pre_footer_col_1": [
+            {
+                "element_type": {
+                    "element": "text",
+                    "text": {
+                        "text_content": "<h3>Stay in the loop</h3><p>Product updates, articles, and offers - straight to your inbox.</p>"
+                    }
+                }
+            }
+        ],
+        "pre_footer_col_2": [
+            {
+                "element_type": {
+                    "element": "cta_button",
+                    "cta_button": {
+                        "cta_text": "Subscribe",
+                        "cta_link": "#"
+                    }
+                }
+            }
+        ]
+    }
+}

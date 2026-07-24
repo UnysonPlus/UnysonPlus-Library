@@ -1,24 +1,120 @@
 {
-  "version": 1,
-  "base_url": "https://raw.githubusercontent.com/UnysonPlus/UnysonPlus-Library/master/presets/",
-  "presets": {
-    "header-floating-pill-caps": {
-      "slug": "header-floating-pill-caps",
-      "group": "header_layout",
-      "label": "Floating Pill · Uppercase",
-      "desc": "Rounded floating nav bar, sticky, with uppercase menu labels."
-    },
-    "page-focus-reading": {
-      "slug": "page-focus-reading",
-      "group": "general_pages",
-      "label": "Focus Reading",
-      "desc": "Hide breadcrumbs and the featured image for a clean reading page."
-    },
-    "page-full-context": {
-      "slug": "page-full-context",
-      "group": "general_pages",
-      "label": "Full Context",
-      "desc": "Show breadcrumbs and the featured image above the content."
+    "version": 1,
+    "base_url": "https://raw.githubusercontent.com/UnysonPlus/UnysonPlus-Library/master/presets/",
+    "presets": {
+        "blog-card-soft": {
+            "slug": "blog-card-soft",
+            "group": "blog_card",
+            "label": "Soft",
+            "desc": "Large radius, medium shadow, roomy padding — friendly and modern."
+        },
+        "blog-index-classic-list": {
+            "slug": "blog-index-classic-list",
+            "group": "blog_index",
+            "label": "Classic List",
+            "desc": "Stacked full-width posts with an excerpt — the timeless blog. Meta below the title, numbered pages."
+        },
+        "copyright-settings-simple": {
+            "slug": "copyright-settings-simple",
+            "group": "copyright_settings",
+            "label": "Simple",
+            "desc": "A single centered copyright line (the year updates automatically)."
+        },
+        "header-bottombar-nav": {
+            "slug": "header-bottombar-nav",
+            "group": "header_bottombar",
+            "label": "Secondary Menu",
+            "desc": "A secondary / category menu on the left — great for sub-navigation under the main header."
+        },
+        "header-elevated-card": {
+            "slug": "header-elevated-card",
+            "group": "header_layout",
+            "label": "Elevated Card",
+            "desc": "Header floats as a raised card, sticky."
+        },
+        "header-floating-pill-caps": {
+            "slug": "header-floating-pill-caps",
+            "group": "header_layout",
+            "label": "Floating Pill · Uppercase",
+            "desc": "Rounded floating nav bar, sticky, with uppercase menu labels."
+        },
+        "header-fullscreen-overlay": {
+            "slug": "header-fullscreen-overlay",
+            "group": "header_layout",
+            "label": "Fullscreen Overlay",
+            "desc": "Hamburger opens a fullscreen Concentric menu."
+        },
+        "header-main-logo-menu": {
+            "slug": "header-main-logo-menu",
+            "group": "header_main",
+            "label": "Logo + Menu",
+            "desc": "Logo on the left, primary menu on the right — the classic arrangement."
+        },
+        "header-menu-classic": {
+            "slug": "header-menu-classic",
+            "group": "header_menu",
+            "label": "Classic",
+            "desc": "Theme defaults — a clean bar with a soft-shadowed dropdown. Also resets the Menu tab."
+        },
+        "header-topbar-contact-social": {
+            "slug": "header-topbar-contact-social",
+            "group": "header_topbar",
+            "label": "Contact & Social",
+            "desc": "Phone + email on the left, social icons on the right — the classic business top bar. Edit each element after applying; social icons use Theme Settings → Social."
+        },
+        "header-vertical-rail": {
+            "slug": "header-vertical-rail",
+            "group": "header_layout",
+            "label": "Vertical Rail",
+            "desc": "Fixed side rail with the logo + menu."
+        },
+        "main-footer-columns-four-col": {
+            "slug": "main-footer-columns-four-col",
+            "group": "main_footer_columns",
+            "label": "Four Columns",
+            "desc": "Four equal link columns (Product / Company / Resources / Legal) - the standard SaaS footer."
+        },
+        "page-focus-reading": {
+            "slug": "page-focus-reading",
+            "group": "general_pages",
+            "label": "Focus Reading",
+            "desc": "Hide breadcrumbs and the featured image for a clean reading page."
+        },
+        "page-full-context": {
+            "slug": "page-full-context",
+            "group": "general_pages",
+            "label": "Full Context",
+            "desc": "Show breadcrumbs and the featured image above the content."
+        },
+        "portfolio-archive-case-study": {
+            "slug": "portfolio-archive-case-study",
+            "group": "portfolio_archive",
+            "label": "Case Study (Designer)",
+            "desc": "Two roomy columns with category + summary on the cards — a curated, story-led work index."
+        },
+        "post-footer-columns-menu-social": {
+            "slug": "post-footer-columns-menu-social",
+            "group": "post_footer_columns",
+            "label": "Menu + Social",
+            "desc": "Footer menu on the left, social icons on the right."
+        },
+        "pre-footer-columns-newsletter": {
+            "slug": "pre-footer-columns-newsletter",
+            "group": "pre_footer_columns",
+            "label": "Newsletter CTA",
+            "desc": "A headline + blurb on the left and a subscribe button on the right - the classic email opt-in band."
+        },
+        "social-style-minimal": {
+            "slug": "social-style-minimal",
+            "group": "social_style",
+            "label": "Minimal",
+            "desc": "Bare glyphs, a touch larger, that shift to the primary color on hover."
+        },
+        "typography-system": {
+            "slug": "typography-system",
+            "group": "typography",
+            "label": "System",
+            "desc": "System + System"
+        }
     }
-  }
 }

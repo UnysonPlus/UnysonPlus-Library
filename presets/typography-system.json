@@ -1,0 +1,63 @@
+{
+    "heading_font": {
+        "family": ""
+    },
+    "body": {
+        "family": "",
+        "variation": "regular",
+        "size": 16,
+        "line-height": 1.6,
+        "letter-spacing": 0,
+        "color": ""
+    },
+    "body_link": "",
+    "body_link_hover": "",
+    "h1": {
+        "family": "",
+        "variation": "regular",
+        "size": 40,
+        "line-height": "1.2",
+        "letter-spacing": 0,
+        "color": ""
+    },
+    "h2": {
+        "family": "",
+        "variation": "regular",
+        "size": 32,
+        "line-height": "1.2",
+        "letter-spacing": 0,
+        "color": ""
+    },
+    "h3": {
+        "family": "",
+        "variation": "regular",
+        "size": 28,
+        "line-height": "1.2",
+        "letter-spacing": 0,
+        "color": ""
+    },
+    "h4": {
+        "family": "",
+        "variation": "regular",
+        "size": 24,
+        "line-height": "1.2",
+        "letter-spacing": 0,
+        "color": ""
+    },
+    "h5": {
+        "family": "",
+        "variation": "regular",
+        "size": 20,
+        "line-height": "1.2",
+        "letter-spacing": 0,
+        "color": ""
+    },
+    "h6": {
+        "family": "",
+        "variation": "regular",
+        "size": 16,
+        "line-height": "1.2",
+        "letter-spacing": 0,
+        "color": ""
+    }
+}

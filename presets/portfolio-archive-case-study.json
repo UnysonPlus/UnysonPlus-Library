@@ -1,0 +1,13 @@
+{
+    "archive_columns": "2",
+    "archive_per_page": "12",
+    "orderby": "date",
+    "order": "DESC",
+    "featured_first": "yes",
+    "archive_filter_bar": "yes",
+    "archive_gap": "32",
+    "archive_ratio": "4-3",
+    "archive_hover": "zoom",
+    "card_show_category": "yes",
+    "card_show_summary": "yes"
+}

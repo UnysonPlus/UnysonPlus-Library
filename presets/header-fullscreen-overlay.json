@@ -1,0 +1,26 @@
+{
+    "header_mode": {
+        "mode": "overlay",
+        "overlay": {
+            "overlay_style": {
+                "style": "concentric",
+                "concentric": {
+                    "overlay_corner": "tr"
+                }
+            },
+            "overlay_color_mode": "shade",
+            "overlay_bg_opacity": 100
+        }
+    },
+    "container": "container",
+    "header_behavior": "static",
+    "header_border": "no",
+    "header_shadow": "no",
+    "header_glass": "no",
+    "header_uppercase_nav": "no",
+    "bg_color": {
+        "predefined": "",
+        "custom": ""
+    },
+    "mobile_breakpoint": "lg"
+}

@@ -1,0 +1,20 @@
+{
+    "enabled": "yes",
+    "yes": {
+        "copyright_columns": {
+            "count": "1",
+            "1": {
+                "copyright_col_1": [
+                    {
+                        "element_type": {
+                            "element": "text",
+                            "text": {
+                                "text_content": "<p>&copy; {{current_year}} Northwind Studio. All rights reserved.</p>"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

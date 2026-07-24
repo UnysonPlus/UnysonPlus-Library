@@ -1,0 +1,23 @@
+{
+    "blog_layout": "list",
+    "blog_columns": "2",
+    "blog_card_style": "plain",
+    "blog_featured_image": "yes",
+    "blog_image_ratio": "16-9",
+    "blog_image_hover": "zoom",
+    "blog_category_badge": "no",
+    "blog_content": "excerpt",
+    "blog_excerpt_length": "30",
+    "blog_meta": {
+        "date": true,
+        "author": true,
+        "category": true,
+        "comments": false,
+        "reading_time": false
+    },
+    "blog_meta_position": "below-title",
+    "blog_read_more": "Read more",
+    "blog_sticky_highlight": "yes",
+    "blog_first_featured": "no",
+    "blog_pagination": "numbers"
+}
