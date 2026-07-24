@@ -1,0 +1,24 @@
+{
+    "header_mode": {
+        "mode": "top",
+        "top": {
+            "header_design": {
+                "design": "centered",
+                "centered": {
+                    "centered_gap": "normal"
+                }
+            }
+        }
+    },
+    "container": "container",
+    "header_behavior": "sticky",
+    "header_border": "no",
+    "header_shadow": "yes",
+    "header_glass": "no",
+    "header_uppercase_nav": "no",
+    "bg_color": {
+        "predefined": "",
+        "custom": ""
+    },
+    "mobile_breakpoint": "lg"
+}

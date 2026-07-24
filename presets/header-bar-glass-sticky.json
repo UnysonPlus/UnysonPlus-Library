@@ -1,0 +1,21 @@
+{
+    "header_mode": {
+        "mode": "top",
+        "top": {
+            "header_design": {
+                "design": "classic"
+            }
+        }
+    },
+    "container": "container",
+    "header_behavior": "sticky",
+    "header_border": "no",
+    "header_shadow": "no",
+    "header_glass": "yes",
+    "header_uppercase_nav": "no",
+    "bg_color": {
+        "predefined": "",
+        "custom": ""
+    },
+    "mobile_breakpoint": "lg"
+}

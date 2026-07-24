@@ -20,11 +20,35 @@
             "label": "Simple",
             "desc": "A single centered copyright line (the year updates automatically)."
         },
+        "header-bar-glass-sticky": {
+            "slug": "header-bar-glass-sticky",
+            "group": "header_layout",
+            "label": "Bar · Glass Sticky",
+            "desc": "Full-width bar that turns frosted-glass and sticks on scroll."
+        },
+        "header-bar-uppercase": {
+            "slug": "header-bar-uppercase",
+            "group": "header_layout",
+            "label": "Bar · Uppercase",
+            "desc": "Static full-width bar with uppercase nav and a hairline border."
+        },
         "header-bottombar-nav": {
             "slug": "header-bottombar-nav",
             "group": "header_bottombar",
             "label": "Secondary Menu",
             "desc": "A secondary / category menu on the left — great for sub-navigation under the main header."
+        },
+        "header-centered-sticky": {
+            "slug": "header-centered-sticky",
+            "group": "header_layout",
+            "label": "Centered · Sticky",
+            "desc": "Centered logo over centered nav, sticky with a soft shadow."
+        },
+        "header-centered-uppercase": {
+            "slug": "header-centered-uppercase",
+            "group": "header_layout",
+            "label": "Centered · Uppercase",
+            "desc": "Centered logo over uppercase centered nav, static with a hairline border."
         },
         "header-elevated-card": {
             "slug": "header-elevated-card",
@@ -56,6 +80,12 @@
             "label": "Classic",
             "desc": "Theme defaults — a clean bar with a soft-shadowed dropdown. Also resets the Menu tab."
         },
+        "header-pill-glass": {
+            "slug": "header-pill-glass",
+            "group": "header_layout",
+            "label": "Floating Pill · Glass",
+            "desc": "Rounded floating nav, sticky, frosted-glass with a soft shadow."
+        },
         "header-topbar-contact-social": {
             "slug": "header-topbar-contact-social",
             "group": "header_topbar",
@@ -74,6 +104,18 @@
             "label": "Four Columns",
             "desc": "Four equal link columns (Product / Company / Resources / Legal) - the standard SaaS footer."
         },
+        "page-article-right": {
+            "slug": "page-article-right",
+            "group": "general_pages",
+            "label": "Article (Right Sidebar)",
+            "desc": "Content with a right sidebar; breadcrumbs and featured image on."
+        },
+        "page-docs-left": {
+            "slug": "page-docs-left",
+            "group": "general_pages",
+            "label": "Docs (Left Sidebar)",
+            "desc": "Left sidebar for navigation, breadcrumbs on, no featured image."
+        },
         "page-focus-reading": {
             "slug": "page-focus-reading",
             "group": "general_pages",
@@ -85,6 +127,12 @@
             "group": "general_pages",
             "label": "Full Context",
             "desc": "Show breadcrumbs and the featured image above the content."
+        },
+        "page-minimal": {
+            "slug": "page-minimal",
+            "group": "general_pages",
+            "label": "Minimal",
+            "desc": "No sidebar, no breadcrumbs, no featured image — bare content."
         },
         "portfolio-archive-case-study": {
             "slug": "portfolio-archive-case-study",
