@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "base_url": "https://raw.githubusercontent.com/UnysonPlus/UnysonPlus-Templates/master/",
+  "base_url": "https://raw.githubusercontent.com/UnysonPlus/UnysonPlus-Library/master/templates/",
   "templates": {
     "stats-band": {
       "slug": "stats-band",
@@ -8,7 +8,7 @@
       "category": "Stats",
       "kind": "section",
       "description": "A five-across band of animated counters with captions — great for a metrics or achievements strip.",
-      "thumb": "templates/stats-band/thumb.svg"
+      "thumb": "stats-band/thumb.svg"
     },
     "counters": {
       "slug": "counters",
@@ -16,7 +16,7 @@
       "category": "Stats",
       "kind": "section",
       "description": "A compact row of animated number counters for highlighting key figures.",
-      "thumb": "templates/counters/thumb.svg"
+      "thumb": "counters/thumb.svg"
     },
     "testimonials": {
       "slug": "testimonials",
@@ -24,7 +24,7 @@
       "category": "Social proof",
       "kind": "section",
       "description": "A testimonials section with customer quotes — drop it in to add social proof.",
-      "thumb": "templates/testimonials/thumb.svg"
+      "thumb": "testimonials/thumb.svg"
     },
     "faq": {
       "slug": "faq",
@@ -32,7 +32,7 @@
       "category": "FAQ",
       "kind": "section",
       "description": "A frequently-asked-questions section built on the accordion element. Edit the questions to fit your site.",
-      "thumb": "templates/faq/thumb.svg"
+      "thumb": "faq/thumb.svg"
     },
     "image-showcase": {
       "slug": "image-showcase",
@@ -40,7 +40,7 @@
       "category": "Media",
       "kind": "section",
       "description": "An image-and-text showcase band — pair a visual with a headline, copy and a call to action.",
-      "thumb": "templates/image-showcase/thumb.svg"
+      "thumb": "image-showcase/thumb.svg"
     }
   }
 }

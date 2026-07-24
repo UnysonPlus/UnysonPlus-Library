@@ -1,29 +1,36 @@
-# UnysonPlus-Templates
+# UnysonPlus-Library
 
-The **data repository** for the UnysonPlus **Template Library** extension
-(`UnysonPlus-Template-Library-Extension`). It holds the premade page-builder
-templates users can browse and install from **Unyson+ → Template Library** inside
-WordPress.
+The **data repository** for the UnysonPlus content libraries. It holds the premade
+content that UnysonPlus extensions let users browse and install from inside
+WordPress — **page-builder templates** today, with **presets** and **icon packs**
+to follow.
 
-This repo contains **no code** — only a catalog and template JSON. The extension
-fetches `catalog.json` from this repo's raw content, and downloads each template's
-export envelope on demand into the site's `wp-content/uploads/unysonplus-templates/`
-folder.
+This repo contains **no code** — only catalogs and content JSON. Each extension
+fetches the `catalog.json` of the library type it owns and downloads individual
+items on demand into the site's `wp-content/uploads/…` folder.
 
-## Layout
+## Layout — one subfolder per library type
 
 ```
-catalog.json                         # the manifest of installable templates
-templates/<slug>/<slug>.json         # the page-builder export envelope for <slug>
-templates/<slug>/thumb.svg           # a preview thumbnail for the card (svg/png/webp)
+templates/       catalog.json + <slug>/<slug>.json + <slug>/thumb.*   ← page-builder templates
+page-presets/    catalog.json + <slug>.json                            (planned)
+header-presets/  catalog.json + <slug>.json                            (planned)
+footer-presets/  catalog.json + <slug>.json                            (planned)
+style-packs/     catalog.json + <slug>/…                               (planned)
+icon-packs/      catalog.json + <slug>/…                               (planned)
 ```
 
-## catalog.json
+Each subfolder is self-contained: its `catalog.json` `base_url` points at that
+subfolder's raw URL, and item/thumbnail paths are relative to it. The matching
+extension points its catalog URL at that subfolder, e.g.
+`https://raw.githubusercontent.com/UnysonPlus/UnysonPlus-Library/master/templates/catalog.json`.
+
+## catalog.json (templates example)
 
 ```json
 {
   "version": 1,
-  "base_url": "https://raw.githubusercontent.com/UnysonPlus/UnysonPlus-Templates/master/",
+  "base_url": "https://raw.githubusercontent.com/UnysonPlus/UnysonPlus-Library/master/templates/",
   "templates": {
     "stats-band": {
       "slug": "stats-band",
@@ -31,32 +38,28 @@ templates/<slug>/thumb.svg           # a preview thumbnail for the card (svg/png
       "category": "Stats",
       "kind": "section",
       "description": "…",
-      "thumb": "templates/stats-band/thumb.svg"
+      "thumb": "stats-band/thumb.svg"
     }
   }
 }
 ```
 
-- **`base_url`** — the raw-content base the extension resolves `templates/…` and
-  `thumb` paths against. Keep the trailing slash.
-- **`kind`** — `section`, `column`, or `full`. Determines which of the builder's
-  Templates tabs the template appears under.
-- **`thumb`** — a path (relative to `base_url`) to a preview image.
+- **`base_url`** — the raw-content base for this library type (keep the trailing slash).
+- **`kind`** (templates) — `section`, `column`, or `full`.
+- **`thumb`** — a path relative to `base_url`.
 
 ## Adding a template
 
 1. In the WordPress page builder, build the section/column/page.
-2. Use **Templates → Export** (the download icon on a section) to get its
-   `.json` export envelope (`{ "_fw_template_export": … , "json": "…" }`).
-3. Save it as `templates/<slug>/<slug>.json`.
-4. Add a `thumb.svg` (or `.png`/`.webp`) preview beside it.
-5. Add an entry to `catalog.json`.
-6. Commit + push. Users see it after the extension's 12-hour catalog cache
-   refreshes (or when they click **Refresh catalog**).
+2. **Templates → Export** (download icon on a section) to get its `.json` export
+   envelope (`{ "_fw_template_export": … , "json": "…" }`).
+3. Save it as `templates/<slug>/<slug>.json`, add a `thumb.svg`/`.webp` beside it.
+4. Add an entry to `templates/catalog.json`.
+5. Commit + push. Users see it after the extension's 12-hour catalog cache
+   refreshes (or on **Refresh catalog**).
 
-### Important — fresh `unique_id`s
+### Fresh `unique_id`s
 
-The page builder does **not** regenerate a template's element `unique_id`s on
-insert. Author each template with unique 32-hex `unique_id`s (an export from a real
-builder page already satisfies this) so two templates never collide on the same
-page.
+The page builder does **not** regenerate element `unique_id`s on insert. Author each
+template with unique 32-hex `unique_id`s (a real builder export already satisfies
+this) so two templates never collide on the same page.
