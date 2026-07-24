@@ -1,0 +1,24 @@
+{
+    "count": "1",
+    "1": {
+        "pre_footer_col_1": [
+            {
+                "element_type": {
+                    "element": "text",
+                    "text": {
+                        "text_content": "<h2>Ready to get started?</h2><p>Join thousands of teams already building with us.</p>"
+                    }
+                }
+            },
+            {
+                "element_type": {
+                    "element": "cta_button",
+                    "cta_button": {
+                        "cta_text": "Get Started",
+                        "cta_link": "#"
+                    }
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "bottombar_left": [],
+    "bottombar_center": [
+        {
+            "element_type": {
+                "element": "menu_area",
+                "menu_area": {
+                    "menu_location": "secondary"
+                }
+            }
+        }
+    ],
+    "bottombar_right": []
+}

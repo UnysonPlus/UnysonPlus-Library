@@ -1,0 +1,26 @@
+{
+    "main_left": [
+        {
+            "element_type": {
+                "element": "logo"
+            }
+        }
+    ],
+    "main_center": [
+        {
+            "element_type": {
+                "element": "search"
+            }
+        }
+    ],
+    "main_right": [
+        {
+            "element_type": {
+                "element": "menu_area",
+                "menu_area": {
+                    "menu_location": "primary"
+                }
+            }
+        }
+    ]
+}

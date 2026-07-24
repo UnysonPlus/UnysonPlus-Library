@@ -1,0 +1,29 @@
+{
+    "main_left": [
+        {
+            "element_type": {
+                "element": "logo"
+            }
+        }
+    ],
+    "main_center": [],
+    "main_right": [
+        {
+            "element_type": {
+                "element": "menu_area",
+                "menu_area": {
+                    "menu_location": "primary"
+                }
+            }
+        },
+        {
+            "element_type": {
+                "element": "cta_button",
+                "cta_button": {
+                    "cta_text": "Get Started",
+                    "cta_link": "#"
+                }
+            }
+        }
+    ]
+}

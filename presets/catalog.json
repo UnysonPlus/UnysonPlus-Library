@@ -20,6 +20,78 @@
             "label": "Simple",
             "desc": "A single centered copyright line (the year updates automatically)."
         },
+        "copyright-settings-split-menu": {
+            "slug": "copyright-settings-split-menu",
+            "group": "copyright_settings",
+            "label": "Copyright + Menu",
+            "desc": "Copyright on the left, a footer menu on the right."
+        },
+        "copyright-settings-split-social": {
+            "slug": "copyright-settings-split-social",
+            "group": "copyright_settings",
+            "label": "Copyright + Social",
+            "desc": "Copyright on the left, social icons on the right."
+        },
+        "footer-back-to-top": {
+            "slug": "footer-back-to-top",
+            "group": "footer_columns",
+            "label": "Back to Top",
+            "desc": "A centered \"Back to Top\" button."
+        },
+        "footer-centered": {
+            "slug": "footer-centered",
+            "group": "footer_columns",
+            "label": "Simple Centered",
+            "desc": "One centered column: logo, footer menu and social icons - minimal and tidy."
+        },
+        "footer-contact": {
+            "slug": "footer-contact",
+            "group": "footer_columns",
+            "label": "Contact Strip",
+            "desc": "Address, phone and email across three columns - an at-a-glance contact band."
+        },
+        "footer-cta": {
+            "slug": "footer-cta",
+            "group": "footer_columns",
+            "label": "Call to Action",
+            "desc": "A single centered headline and button - a strong closing prompt before the footer."
+        },
+        "footer-four-col": {
+            "slug": "footer-four-col",
+            "group": "footer_columns",
+            "label": "Four Columns",
+            "desc": "Four equal link columns (Product / Company / Resources / Legal) - the standard SaaS footer."
+        },
+        "footer-logo-links": {
+            "slug": "footer-logo-links",
+            "group": "footer_columns",
+            "label": "Logo + Links",
+            "desc": "A branding column (logo + blurb + social) beside three link columns."
+        },
+        "footer-menu-social": {
+            "slug": "footer-menu-social",
+            "group": "footer_columns",
+            "label": "Menu + Social",
+            "desc": "Footer menu on the left, social icons on the right."
+        },
+        "footer-newsletter": {
+            "slug": "footer-newsletter",
+            "group": "footer_columns",
+            "label": "Newsletter CTA",
+            "desc": "A headline + blurb on the left and a subscribe button on the right - the classic email opt-in band."
+        },
+        "footer-social": {
+            "slug": "footer-social",
+            "group": "footer_columns",
+            "label": "Centered Social",
+            "desc": "A single centered row of social icons."
+        },
+        "footer-three-col": {
+            "slug": "footer-three-col",
+            "group": "footer_columns",
+            "label": "About + Links + Contact",
+            "desc": "A wide About column, a Quick Links column, and a contact column - a friendly small-business footer."
+        },
         "header-bar-glass-sticky": {
             "slug": "header-bar-glass-sticky",
             "group": "header_layout",
@@ -32,11 +104,29 @@
             "label": "Bar · Uppercase",
             "desc": "Static full-width bar with uppercase nav and a hairline border."
         },
+        "header-bottombar-centered-nav": {
+            "slug": "header-bottombar-centered-nav",
+            "group": "header_bottombar",
+            "label": "Centered Menu",
+            "desc": "A single centered secondary menu — clean and symmetric."
+        },
         "header-bottombar-nav": {
             "slug": "header-bottombar-nav",
             "group": "header_bottombar",
             "label": "Secondary Menu",
             "desc": "A secondary / category menu on the left — great for sub-navigation under the main header."
+        },
+        "header-bottombar-nav-search": {
+            "slug": "header-bottombar-nav-search",
+            "group": "header_bottombar",
+            "label": "Menu + Search",
+            "desc": "Secondary menu on the left, a search field on the right — the storefront sub-bar."
+        },
+        "header-bottombar-nav-social": {
+            "slug": "header-bottombar-nav-social",
+            "group": "header_bottombar",
+            "label": "Menu + Social",
+            "desc": "Secondary menu on the left, social icons on the right."
         },
         "header-centered-sticky": {
             "slug": "header-centered-sticky",
@@ -68,11 +158,29 @@
             "label": "Fullscreen Overlay",
             "desc": "Hamburger opens a fullscreen Concentric menu."
         },
+        "header-main-centered-logo": {
+            "slug": "header-main-centered-logo",
+            "group": "header_main",
+            "label": "Centered Logo",
+            "desc": "Menu on the left, logo centered, a CTA on the right — a balanced, boutique split."
+        },
+        "header-main-commerce": {
+            "slug": "header-main-commerce",
+            "group": "header_main",
+            "label": "Logo + Search",
+            "desc": "Logo left, a search field centered, menu right — the storefront header."
+        },
         "header-main-logo-menu": {
             "slug": "header-main-logo-menu",
             "group": "header_main",
             "label": "Logo + Menu",
             "desc": "Logo on the left, primary menu on the right — the classic arrangement."
+        },
+        "header-main-menu-cta": {
+            "slug": "header-main-menu-cta",
+            "group": "header_main",
+            "label": "Menu + CTA",
+            "desc": "Logo left; the menu and a call-to-action button on the right — the SaaS / marketing header."
         },
         "header-menu-classic": {
             "slug": "header-menu-classic",
@@ -86,23 +194,35 @@
             "label": "Floating Pill · Glass",
             "desc": "Rounded floating nav, sticky, frosted-glass with a soft shadow."
         },
+        "header-topbar-announcement": {
+            "slug": "header-topbar-announcement",
+            "group": "header_topbar",
+            "label": "Announcement",
+            "desc": "A single centered promo line — great for shipping offers or campaigns."
+        },
+        "header-topbar-contact-hours": {
+            "slug": "header-topbar-contact-hours",
+            "group": "header_topbar",
+            "label": "Contact + Hours",
+            "desc": "Phone + email on the left, opening hours centered, social icons on the right."
+        },
         "header-topbar-contact-social": {
             "slug": "header-topbar-contact-social",
             "group": "header_topbar",
             "label": "Contact & Social",
             "desc": "Phone + email on the left, social icons on the right — the classic business top bar. Edit each element after applying; social icons use Theme Settings → Social."
         },
+        "header-topbar-info-social": {
+            "slug": "header-topbar-info-social",
+            "group": "header_topbar",
+            "label": "Info & Social",
+            "desc": "Address + phone on the left, social icons on the right."
+        },
         "header-vertical-rail": {
             "slug": "header-vertical-rail",
             "group": "header_layout",
             "label": "Vertical Rail",
             "desc": "Fixed side rail with the logo + menu."
-        },
-        "main-footer-columns-four-col": {
-            "slug": "main-footer-columns-four-col",
-            "group": "main_footer_columns",
-            "label": "Four Columns",
-            "desc": "Four equal link columns (Product / Company / Resources / Legal) - the standard SaaS footer."
         },
         "page-article-right": {
             "slug": "page-article-right",
@@ -139,18 +259,6 @@
             "group": "portfolio_archive",
             "label": "Case Study (Designer)",
             "desc": "Two roomy columns with category + summary on the cards — a curated, story-led work index."
-        },
-        "post-footer-columns-menu-social": {
-            "slug": "post-footer-columns-menu-social",
-            "group": "post_footer_columns",
-            "label": "Menu + Social",
-            "desc": "Footer menu on the left, social icons on the right."
-        },
-        "pre-footer-columns-newsletter": {
-            "slug": "pre-footer-columns-newsletter",
-            "group": "pre_footer_columns",
-            "label": "Newsletter CTA",
-            "desc": "A headline + blurb on the left and a subscribe button on the right - the classic email opt-in band."
         },
         "social-style-minimal": {
             "slug": "social-style-minimal",

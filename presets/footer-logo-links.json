@@ -1,0 +1,73 @@
+{
+    "count": "4",
+    "4": {
+        "main_footer_split": [
+            {
+                "w": 50,
+                "name": ""
+            },
+            {
+                "w": 17,
+                "name": ""
+            },
+            {
+                "w": 17,
+                "name": ""
+            },
+            {
+                "w": 16,
+                "name": ""
+            }
+        ],
+        "main_footer_col_1": [
+            {
+                "element_type": {
+                    "element": "logo"
+                }
+            },
+            {
+                "element_type": {
+                    "element": "text",
+                    "text": {
+                        "text_content": "<p>Design, build &amp; grow - a modern platform for teams that ship.</p>"
+                    }
+                }
+            },
+            {
+                "element_type": {
+                    "element": "social_icons"
+                }
+            }
+        ],
+        "main_footer_col_2": [
+            {
+                "element_type": {
+                    "element": "text",
+                    "text": {
+                        "text_content": "<h4>Product</h4><ul><li><a href=\"#\">Features</a></li><li><a href=\"#\">Pricing</a></li><li><a href=\"#\">Integrations</a></li></ul>"
+                    }
+                }
+            }
+        ],
+        "main_footer_col_3": [
+            {
+                "element_type": {
+                    "element": "text",
+                    "text": {
+                        "text_content": "<h4>Company</h4><ul><li><a href=\"#\">About</a></li><li><a href=\"#\">Careers</a></li><li><a href=\"#\">Blog</a></li></ul>"
+                    }
+                }
+            }
+        ],
+        "main_footer_col_4": [
+            {
+                "element_type": {
+                    "element": "text",
+                    "text": {
+                        "text_content": "<h4>Resources</h4><ul><li><a href=\"#\">Docs</a></li><li><a href=\"#\">Support</a></li><li><a href=\"#\">Community</a></li></ul>"
+                    }
+                }
+            }
+        ]
+    }
+}

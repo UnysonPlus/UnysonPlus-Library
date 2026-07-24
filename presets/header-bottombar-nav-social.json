@@ -1,0 +1,20 @@
+{
+    "bottombar_left": [
+        {
+            "element_type": {
+                "element": "menu_area",
+                "menu_area": {
+                    "menu_location": "secondary"
+                }
+            }
+        }
+    ],
+    "bottombar_center": [],
+    "bottombar_right": [
+        {
+            "element_type": {
+                "element": "social_icons"
+            }
+        }
+    ]
+}

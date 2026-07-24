@@ -1,0 +1,25 @@
+{
+    "count": "1",
+    "1": {
+        "main_footer_col_1": [
+            {
+                "element_type": {
+                    "element": "logo"
+                }
+            },
+            {
+                "element_type": {
+                    "element": "menu_area",
+                    "menu_area": {
+                        "menu_location": "footer"
+                    }
+                }
+            },
+            {
+                "element_type": {
+                    "element": "social_icons"
+                }
+            }
+        ]
+    }
+}

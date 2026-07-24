@@ -1,0 +1,20 @@
+{
+    "topbar_left": [],
+    "topbar_center": [
+        {
+            "element_type": {
+                "element": "icon_text",
+                "icon_text": {
+                    "icontext_icon": {
+                        "type": "icon-font",
+                        "icon-class": "fas fa-bullhorn"
+                    },
+                    "icontext_text": "Free shipping on orders over $50",
+                    "icontext_link_type": "url",
+                    "icontext_link": "/shop/"
+                }
+            }
+        }
+    ],
+    "topbar_right": []
+}

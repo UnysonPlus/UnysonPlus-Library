@@ -1,0 +1,67 @@
+{
+    "count": "3",
+    "3": {
+        "pre_footer_split": [
+            {
+                "w": 34,
+                "name": ""
+            },
+            {
+                "w": 33,
+                "name": ""
+            },
+            {
+                "w": 33,
+                "name": ""
+            }
+        ],
+        "pre_footer_col_1": [
+            {
+                "element_type": {
+                    "element": "icon_text",
+                    "icon_text": {
+                        "icontext_icon": {
+                            "type": "icon-font",
+                            "icon-class": "fas fa-location-dot"
+                        },
+                        "icontext_text": "123 Main St, Springfield",
+                        "icontext_link_type": "none",
+                        "icontext_link": ""
+                    }
+                }
+            }
+        ],
+        "pre_footer_col_2": [
+            {
+                "element_type": {
+                    "element": "icon_text",
+                    "icon_text": {
+                        "icontext_icon": {
+                            "type": "icon-font",
+                            "icon-class": "fas fa-phone"
+                        },
+                        "icontext_text": "+1 (555) 123-4567",
+                        "icontext_link_type": "phone",
+                        "icontext_link": ""
+                    }
+                }
+            }
+        ],
+        "pre_footer_col_3": [
+            {
+                "element_type": {
+                    "element": "icon_text",
+                    "icon_text": {
+                        "icontext_icon": {
+                            "type": "icon-font",
+                            "icon-class": "fas fa-envelope"
+                        },
+                        "icontext_text": "info@example.com",
+                        "icontext_link_type": "email",
+                        "icontext_link": ""
+                    }
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,40 @@
+{
+    "enabled": "yes",
+    "yes": {
+        "copyright_columns": {
+            "count": "2",
+            "2": {
+                "copyright_split": [
+                    {
+                        "w": 50,
+                        "name": ""
+                    },
+                    {
+                        "w": 50,
+                        "name": ""
+                    }
+                ],
+                "copyright_col_1": [
+                    {
+                        "element_type": {
+                            "element": "text",
+                            "text": {
+                                "text_content": "<p>&copy; {{current_year}} Northwind Studio. All rights reserved.</p>"
+                            }
+                        }
+                    }
+                ],
+                "copyright_col_2": [
+                    {
+                        "element_type": {
+                            "element": "menu_area",
+                            "menu_area": {
+                                "menu_location": "footer"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}
