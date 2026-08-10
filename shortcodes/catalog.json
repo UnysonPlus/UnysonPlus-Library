@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "base_url": "https://raw.githubusercontent.com/UnysonPlus/UnysonPlus-Library/master/shortcodes/",
+  "generated": "",
+  "shortcodes": {
+    "instagram": {
+      "slug": "instagram",
+      "title": "Instagram",
+      "description": "A responsive grid of your recent Instagram posts (Graph API, server-side + cached). Full Content / Layout / Styling / Advanced tabs, Gap-Scale preset, adjustable dimensions (max-width + tile ratio), and scoped Custom CSS.",
+      "category": "Social",
+      "version": "1.1.0",
+      "min_core": "2.15.0",
+      "requires": [],
+      "author": "UnysonPlus",
+      "thumb": "instagram/thumb.svg",
+      "payload": "instagram/instagram.zip",
+      "sha256": "eeb3abcb8788e06737b42c8a9cdf732fdf145764fc689b7eb9575dc3ac84d011",
+      "bytes": 9966
+    }
+  }
+}

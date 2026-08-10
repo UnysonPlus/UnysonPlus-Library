@@ -1,0 +1,78 @@
+/* UnysonPlus — Instagram feed shortcode (Library). All layout/appearance driven by CSS
+   variables set on the wrapper, so Advanced → Custom CSS can override any of them. */
+.upw-instagram {
+	--ig-cols: 3;
+	--ig-gap: 8px;
+	--ig-radius: 6px;
+	--ig-aspect: 1 / 1;
+	--ig-overlay: rgba(0, 0, 0, .72);
+	--ig-handle: linear-gradient(45deg, #f09433, #dc2743, #bc1888);
+	margin: 0 auto;
+}
+
+.upw-instagram__handle {
+	display: inline-block;
+	margin: 0 0 .85rem;
+	font-weight: 600;
+	text-decoration: none;
+	background: var(--ig-handle);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+.upw-instagram__handle:hover { opacity: .85; }
+
+.upw-instagram__grid {
+	display: grid;
+	grid-template-columns: repeat(var(--ig-cols), 1fr);
+	gap: var(--ig-gap);
+	width: 100%;
+}
+
+.upw-instagram__tile {
+	position: relative;
+	display: block;
+	overflow: hidden;
+	aspect-ratio: var(--ig-aspect);
+	border-radius: var(--ig-radius);
+	background: #f2f2f2;
+	text-decoration: none;
+}
+.upw-instagram--natural .upw-instagram__tile { aspect-ratio: auto; }
+
+.upw-instagram__tile img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	transition: transform .5s ease;
+}
+.upw-instagram--natural .upw-instagram__tile img { height: auto; }
+a.upw-instagram__tile:hover img { transform: scale(1.06); }
+.upw-instagram--no-zoom a.upw-instagram__tile:hover img { transform: none; }
+
+.upw-instagram__cap {
+	position: absolute;
+	inset: auto 0 0 0;
+	padding: 28px 12px 12px;
+	font-size: 12px;
+	line-height: 1.4;
+	color: #fff;
+	background: linear-gradient(to top, var(--ig-overlay), rgba(0, 0, 0, 0));
+	opacity: 0;
+	transition: opacity .3s ease;
+	pointer-events: none;
+}
+.upw-instagram__tile:hover .upw-instagram__cap { opacity: 1; }
+
+/* Placeholder state (no token / feed unavailable). */
+.upw-instagram__tile--ph { background: linear-gradient(45deg, #f09433, #dc2743, #bc1888); }
+.upw-instagram__note { margin: .7rem 0 0; font-size: 13px; color: #888; }
+
+/* Responsive: step columns down so a 4–6 col desktop grid stays usable on smaller screens. */
+@media (max-width: 991px) {
+	.upw-instagram__grid { grid-template-columns: repeat(min(var(--ig-cols), 3), 1fr); }
+}
+@media (max-width: 600px) {
+	.upw-instagram__grid { grid-template-columns: repeat(min(var(--ig-cols), 2), 1fr); }
+}

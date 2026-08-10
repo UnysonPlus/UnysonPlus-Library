@@ -1,0 +1,9 @@
+{
+  "title": "Instagram",
+  "description": "A responsive grid of your recent Instagram posts (Graph API, server-side + cached). Full Content / Layout / Styling / Advanced tabs, Gap-Scale preset, adjustable dimensions (max-width + tile ratio), and scoped Custom CSS.",
+  "category": "Social",
+  "version": "1.1.0",
+  "min_core": "2.15.0",
+  "requires": [],
+  "author": "UnysonPlus"
+}
