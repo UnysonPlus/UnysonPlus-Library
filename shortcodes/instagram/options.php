@@ -1,21 +1,10 @@
-<?php if ( ! defined( 'FW' ) ) { die( 'Forbidden' ); }
+<?php if ( ! defined( 'FW' ) ) {
+	die( 'Forbidden' );
+}
 
-/**
- * Instagram feed options — Content / Layout / Styling / Advanced, the standard shortcode
- * shape. Reuses the shared framework presets + helpers: the Gap Scale (sc_get_gap_select_choices),
- * compact color fields (sc_color_field_compact), and the standard Advanced tab (sc_get_advanced_tab).
- * The Access Token is a CREDENTIAL — used only for the server-side API call, never printed.
- */
-
-$ig_gap_choices = function_exists( 'sc_get_gap_select_choices' )
-	? sc_get_gap_select_choices( __( 'None', 'fw' ) )
-	: array( '' => __( 'None', 'fw' ), '4' => '4px', '8' => '8px', '16' => '16px' );
-
-$ig_help = function ( $ctx ) { return function_exists( 'sc_styling_help_text' ) ? sc_styling_help_text( $ctx ) : ''; };
+$igf_cols = array( '1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5', '6' => '6' );
 
 $options = array(
-
-	/* ---------------------------------------------------------------- Content */
 	'tab_content' => array(
 		'title'   => __( 'Content', 'fw' ),
 		'type'    => 'tab',
@@ -23,199 +12,269 @@ $options = array(
 			'group_source' => array(
 				'type'    => 'group',
 				'options' => array(
-					'username' => array(
-						'label' => __( 'Username', 'fw' ),
-						'desc'  => __( 'Your Instagram handle (without the @). Shown as the heading and used for the profile link.', 'fw' ),
+					'source' => array(
+						'type'         => 'multi-picker',
+						'label'        => false,
+						'desc'         => false,
+						'show_borders' => false,
+						'picker'       => array(
+							'mode' => array(
+								'label'   => __( 'Posts From', 'fw' ),
+								'type'    => 'select',
+								'value'   => 'account',
+								'choices' => array(
+									'account' => __( 'A connected Instagram account (updates itself)', 'fw' ),
+									'manual'  => __( 'Images I choose', 'fw' ),
+								),
+								'desc'    => __( 'A connected account shows its latest posts and keeps them current. Chosen images work with any account and need no connection.', 'fw' ),
+							),
+						),
+						'choices'      => array(
+							'account' => array(
+								'access_token' => array(
+									'label' => __( 'Access Token', 'fw' ),
+									'type'  => 'password',
+									'value' => '',
+									'desc'  => __( 'A long-lived Instagram access token for a Business or Creator account (Instagram API with Instagram Login). Personal accounts cannot share their posts. The token is refreshed automatically, so it keeps working after its first 60 days.', 'fw' ),
+									'help'  => __( 'Create it in the Meta developer dashboard: add the Instagram product to an app, use "API setup with Instagram login", add the account and click "Generate token". Paste the token here. It is stored on your site only and is never shown on the page.', 'fw' ),
+								),
+								'cache_hours'  => array(
+									'label'   => __( 'Check for New Posts', 'fw' ),
+									'type'    => 'select',
+									'value'   => '6',
+									'choices' => array(
+										'1'   => __( 'Every hour', 'fw' ),
+										'3'   => __( 'Every 3 hours', 'fw' ),
+										'6'   => __( 'Every 6 hours', 'fw' ),
+										'12'  => __( 'Every 12 hours', 'fw' ),
+										'24'  => __( 'Once a day', 'fw' ),
+									),
+									'desc'    => __( 'Posts and images are saved on your site and refreshed in the background, so the feed loads fast and still shows if Instagram is down.', 'fw' ),
+								),
+							),
+							'manual'  => array(
+								'posts' => array(
+									'label'         => __( 'Images', 'fw' ),
+									'type'          => 'addable-popup',
+									'value'         => array(),
+									'template'      => '{{- link || "Image" }}',
+									'popup-options' => array(
+										'image' => array(
+											'label'       => __( 'Image', 'fw' ),
+											'type'        => 'upload',
+											'images_only' => true,
+										),
+										'link'  => array(
+											'label' => __( 'Link', 'fw' ),
+											'type'  => 'text',
+											'value' => '',
+											'desc'  => __( 'The Instagram post this tile opens. Leave empty to use the profile link.', 'fw' ),
+										),
+										'kind'  => array(
+											'label'   => __( 'Post Type Icon', 'fw' ),
+											'type'    => 'select',
+											'value'   => 'image',
+											'choices' => array(
+												'image' => __( 'Photo (no icon)', 'fw' ),
+												'video' => __( 'Reel / video', 'fw' ),
+												'album' => __( 'Several photos', 'fw' ),
+											),
+										),
+										'alt'   => array(
+											'label' => __( 'Description', 'fw' ),
+											'type'  => 'text',
+											'value' => '',
+											'desc'  => __( 'Alt text for screen readers. Leave empty to use the image\'s own alt text.', 'fw' ),
+										),
+									),
+								),
+							),
+						),
+					),
+				),
+			),
+			'group_header' => array(
+				'type'    => 'group',
+				'options' => array(
+					'show_header'    => array(
+						'label'        => __( 'Profile Header', 'fw' ),
+						'type'         => 'switch',
+						'value'        => 'yes',
+						'left-choice'  => array( 'value' => 'no', 'label' => __( 'Hide', 'fw' ) ),
+						'right-choice' => array( 'value' => 'yes', 'label' => __( 'Show', 'fw' ) ),
+						'desc'         => __( 'The profile picture, name, @handle and Follow button above the posts.', 'fw' ),
+					),
+					'profile_handle' => array(
+						'label' => __( 'Instagram Handle', 'fw' ),
 						'type'  => 'text',
 						'value' => '',
+						'desc'  => __( 'For example @yourvilla. Links the header and Follow button to the profile. A connected account fills this in by itself.', 'fw' ),
 					),
-					'access_token' => array(
-						'label' => __( 'Access Token', 'fw' ),
-						'desc'  => __( 'A long-lived Instagram Basic Display / Graph API token. Used only for the server-side feed request and never shown on the page. Leave empty to preview a placeholder grid.', 'fw' ),
-						'help'  => __( 'Create a token in the Meta for Developers dashboard (Instagram Basic Display → User Token Generator). Long-lived tokens last ~60 days and can be refreshed.', 'fw' ),
+					'profile_name'   => array(
+						'label' => __( 'Display Name', 'fw' ),
 						'type'  => 'text',
 						'value' => '',
+						'desc'  => __( 'Shown in bold beside the picture. Leave empty to use the account\'s own name.', 'fw' ),
 					),
-					'count' => array(
-						'label'   => __( 'Number of posts', 'fw' ),
-						'type'    => 'select',
-						'value'   => '6',
-						'choices' => array( '3' => '3', '6' => '6', '9' => '9', '12' => '12', '15' => '15', '18' => '18' ),
+					'profile_avatar' => array(
+						'label'       => __( 'Profile Picture', 'fw' ),
+						'type'        => 'upload',
+						'images_only' => true,
+						'desc'        => __( 'Leave empty to use the account\'s own picture.', 'fw' ),
+					),
+					'follow_label'   => array(
+						'label' => __( 'Button Text', 'fw' ),
+						'type'  => 'text',
+						'value' => __( 'Follow', 'fw' ),
+					),
+					'button_preset'  => array(
+						'type'         => 'button-style-picker',
+						'label'        => __( 'Button Preset', 'fw' ),
+						'choices'      => function_exists( 'sc_get_button_style_choices' ) ? sc_get_button_style_choices() : array(),
+						'value'        => '',
+						'allow_none'   => true,
+						'preview_text' => __( 'Follow', 'fw' ),
+						'desc'         => __( 'None keeps the Instagram-blue Follow button. Pick a Button Preset (Theme Settings → General → Buttons) to match the rest of the site.', 'fw' ),
 					),
 				),
 			),
 		),
 	),
 
-	/* ---------------------------------------------------------------- Layout */
 	'tab_layout' => array(
 		'title'   => __( 'Layout', 'fw' ),
 		'type'    => 'tab',
 		'options' => array(
-			'group_grid' => array(
+			'group_layout' => array(
 				'type'    => 'group',
 				'options' => array(
-					'columns' => array(
-						'label'   => __( 'Columns', 'fw' ),
+					'layout'          => array(
+						'label'   => __( 'Layout', 'fw' ),
+						'type'    => 'select',
+						'value'   => 'slider',
+						'choices' => array(
+							'grid'   => __( 'Grid (all posts at once)', 'fw' ),
+							'slider' => __( 'Slider (pages with arrows)', 'fw' ),
+						),
+					),
+					'count'           => array(
+						'label'   => __( 'Number of Posts', 'fw' ),
+						'type'    => 'select',
+						'value'   => '16',
+						'choices' => array( '4' => '4', '6' => '6', '8' => '8', '9' => '9', '12' => '12', '16' => '16', '20' => '20', '24' => '24' ),
+						'desc'    => __( 'For a connected account, the latest posts. Chosen images show in their own order.', 'fw' ),
+					),
+					'rows'            => array(
+						'label'   => __( 'Rows', 'fw' ),
+						'type'    => 'select',
+						'value'   => '2',
+						'choices' => array( '1' => '1', '2' => '2', '3' => '3' ),
+						'desc'    => __( 'Slider only: how many rows each page shows.', 'fw' ),
+					),
+					'columns'         => array(
+						'label'   => __( 'Columns (Desktop)', 'fw' ),
+						'type'    => 'select',
+						'value'   => '4',
+						'choices' => $igf_cols,
+					),
+					'columns_tablet'  => array(
+						'label'   => __( 'Columns (Tablet)', 'fw' ),
 						'type'    => 'select',
 						'value'   => '3',
-						'choices' => array( '1' => '1', '2' => '2', '3' => '3', '4' => '4', '5' => '5', '6' => '6' ),
-						'desc'    => __( 'Tiles per row on desktop; tablet and phone step down automatically.', 'fw' ),
+						'choices' => $igf_cols,
 					),
-					'gap' => array(
-						'label'   => __( 'Gap', 'fw' ),
+					'columns_mobile'  => array(
+						'label'   => __( 'Columns (Phone)', 'fw' ),
 						'type'    => 'select',
-						'value'   => '',
-						'choices' => $ig_gap_choices,
-						'desc'    => __( 'Spacing between tiles, from your Spacing → Gap Scale presets.', 'fw' ),
-						'help'    => $ig_help( 'spacing' ),
+						'value'   => '2',
+						'choices' => $igf_cols,
 					),
-				),
-			),
-			'group_dimensions' => array(
-				'type'    => 'group',
-				'title'   => __( 'Dimensions', 'fw' ),
-				'options' => array(
-					// Overall feed WIDTH — constrain the grid narrower than its container. Empty = full width.
-					'max_width' => array(
-						'label' => __( 'Max width', 'fw' ),
+					'ratio'           => array(
+						'label'   => __( 'Tile Shape', 'fw' ),
+						'type'    => 'select',
+						'value'   => '1-1',
+						'choices' => array(
+							'1-1' => __( 'Square', 'fw' ),
+							'4-5' => __( 'Portrait 4:5 (Instagram feed)', 'fw' ),
+							'9-16' => __( 'Tall 9:16 (Reels)', 'fw' ),
+						),
+					),
+					'gap'             => array(
+						'label'   => __( 'Gap Between Tiles', 'fw' ),
+						'type'    => 'select',
+						'value'   => '0',
+						'choices' => array( '0' => __( 'None', 'fw' ), '2' => '2px', '6' => '6px', '12' => '12px', '20' => '20px' ),
+					),
+					'rounding'        => array(
+						'label'   => __( 'Tile Corners', 'fw' ),
+						'type'    => 'select',
+						'value'   => 'none',
+						'choices' => array( 'none' => __( 'Square', 'fw' ), 'small' => __( 'Slightly rounded', 'fw' ), 'medium' => __( 'Rounded', 'fw' ), 'large' => __( 'Very rounded', 'fw' ) ),
+					),
+					'max_width'       => array(
+						'label' => __( 'Maximum Width', 'fw' ),
 						'type'  => 'unit-input',
 						'units' => array( 'px', '%', 'rem', 'vw' ),
 						'value' => array( 'value' => '', 'unit' => 'px' ),
-						'min'   => 0,
-						'desc'  => __( 'Maximum width of the whole feed. Leave empty to fill the column/section. Use the Alignment below to place a constrained feed.', 'fw' ),
+						'desc'  => __( 'Leave empty to fill the column.', 'fw' ),
 					),
-					'align' => array(
+					'align'           => array(
 						'label'   => __( 'Alignment', 'fw' ),
 						'type'    => 'select',
 						'value'   => 'center',
-						'choices' => array(
-							'left'   => __( 'Left', 'fw' ),
-							'center' => __( 'Center', 'fw' ),
-							'right'  => __( 'Right', 'fw' ),
-						),
-						'desc'    => __( 'How a max-width-constrained feed sits in its container.', 'fw' ),
+						'choices' => array( 'left' => __( 'Left', 'fw' ), 'center' => __( 'Center', 'fw' ), 'right' => __( 'Right', 'fw' ) ),
+						'desc'    => __( 'Where the feed sits when a Maximum Width is set.', 'fw' ),
 					),
-					// Tile HEIGHT is driven by an aspect ratio so the grid stays responsive at any width.
-					'aspect' => array(
-						'type'    => 'multi-picker',
-						'label'   => false,
-						'desc'    => false,
-						'value'   => array( 'ratio' => '1-1' ),
-						'picker'  => array(
-							'ratio' => array(
-								'label'   => __( 'Tile shape (height)', 'fw' ),
-								'type'    => 'select',
-								'choices' => array(
-									'1-1'  => __( 'Square (1:1)', 'fw' ),
-									'4-5'  => __( 'Portrait (4:5)', 'fw' ),
-									'3-4'  => __( 'Tall (3:4)', 'fw' ),
-									'16-9' => __( 'Landscape (16:9)', 'fw' ),
-									'auto' => __( 'Natural (original)', 'fw' ),
-									'custom' => __( 'Custom…', 'fw' ),
-								),
-								'desc'    => __( 'Sets each tile\'s height relative to its width, so tiles stay uniform as the grid reflows.', 'fw' ),
-							),
-						),
-						'choices' => array(
-							'custom' => array(
-								'aspect_custom' => array(
-									'label' => __( 'Custom ratio', 'fw' ),
-									'type'  => 'text',
-									'value' => '4 / 3',
-									'desc'  => __( 'A CSS aspect-ratio, e.g. <code>4 / 3</code> or <code>1.5</code>.', 'fw' ),
-								),
-							),
-						),
-						'show_borders' => false,
+					'show_type_icon'  => array(
+						'label'        => __( 'Reel & Album Icons', 'fw' ),
+						'type'         => 'switch',
+						'value'        => 'yes',
+						'left-choice'  => array( 'value' => 'no', 'label' => __( 'Hide', 'fw' ) ),
+						'right-choice' => array( 'value' => 'yes', 'label' => __( 'Show', 'fw' ) ),
 					),
-				),
-			),
-		),
-	),
-
-	/* ---------------------------------------------------------------- Styling */
-	'tab_styling' => array(
-		'title'   => __( 'Styling', 'fw' ),
-		'type'    => 'tab',
-		'options' => array(
-			'group_appearance' => array(
-				'type'    => 'group',
-				'options' => array(
-					'rounding' => array(
-						'label'   => __( 'Corner rounding', 'fw' ),
+					'hover'           => array(
+						'label'   => __( 'Hover Effect', 'fw' ),
 						'type'    => 'select',
-						'value'   => 'small',
+						'value'   => 'zoom',
 						'choices' => array(
-							'none'   => __( 'None', 'fw' ),
-							'small'  => __( 'Small', 'fw' ),
-							'medium' => __( 'Medium', 'fw' ),
-							'large'  => __( 'Large', 'fw' ),
-							'circle' => __( 'Circle', 'fw' ),
+							'zoom'    => __( 'Zoom and darken', 'fw' ),
+							'darken'  => __( 'Darken only', 'fw' ),
+							'none'    => __( 'None', 'fw' ),
 						),
 					),
-					'hover_zoom' => array(
-						'label'        => __( 'Zoom on hover', 'fw' ),
+					'new_tab'         => array(
+						'label'        => __( 'Open Instagram in a New Tab', 'fw' ),
 						'type'         => 'switch',
 						'value'        => 'yes',
-						'left-choice'  => array( 'value' => 'no',  'label' => __( 'No', 'fw' ) ),
+						'left-choice'  => array( 'value' => 'no', 'label' => __( 'No', 'fw' ) ),
 						'right-choice' => array( 'value' => 'yes', 'label' => __( 'Yes', 'fw' ) ),
 					),
-					'show_caption' => array(
-						'label'        => __( 'Caption on hover', 'fw' ),
-						'desc'         => __( 'Fade in the post caption when hovering a tile.', 'fw' ),
+					'frame'           => array(
+						'label'        => __( 'White Frame', 'fw' ),
 						'type'         => 'switch',
-						'value'        => 'no',
-						'left-choice'  => array( 'value' => 'no',  'label' => __( 'No', 'fw' ) ),
+						'value'        => 'yes',
+						'left-choice'  => array( 'value' => 'no', 'label' => __( 'No', 'fw' ) ),
 						'right-choice' => array( 'value' => 'yes', 'label' => __( 'Yes', 'fw' ) ),
+						'desc'         => __( 'A white panel behind the header, like an Instagram profile.', 'fw' ),
 					),
-				),
-			),
-			'group_colors' => array(
-				'type'    => 'group',
-				'options' => array(
-					'handle_color' => function_exists( 'sc_color_field_compact' )
-						? sc_color_field_compact( array( 'label' => __( 'Handle color', 'fw' ), 'desc' => __( 'Color of the @username heading. Defaults to the Instagram gradient.', 'fw' ), 'kind' => 'text' ) )
-						: array( 'label' => __( 'Handle color', 'fw' ), 'type' => 'color-picker', 'value' => '' ),
-					'overlay_color' => function_exists( 'sc_color_field_compact' )
-						? sc_color_field_compact( array( 'label' => __( 'Caption overlay', 'fw' ), 'desc' => __( 'Tint behind the hover caption.', 'fw' ), 'kind' => 'bg' ) )
-						: array( 'label' => __( 'Caption overlay', 'fw' ), 'type' => 'color-picker', 'value' => '' ),
 				),
 			),
 		),
 	),
 
-	/* ---------------------------------------------------------------- Links */
-	'tab_links' => array(
-		'title'   => __( 'Links', 'fw' ),
+	'tab_animation' => array(
+		'title'   => __( 'Animations', 'fw' ),
 		'type'    => 'tab',
-		'options' => array(
-			'group_links' => array(
-				'type'    => 'group',
-				'options' => array(
-					'link_to_post' => array(
-						'label'        => __( 'Link tiles to the post', 'fw' ),
-						'type'         => 'switch',
-						'value'        => 'yes',
-						'left-choice'  => array( 'value' => 'no',  'label' => __( 'No', 'fw' ) ),
-						'right-choice' => array( 'value' => 'yes', 'label' => __( 'Yes', 'fw' ) ),
-					),
-					'new_tab' => array(
-						'label'        => __( 'Open links in a new tab', 'fw' ),
-						'type'         => 'switch',
-						'value'        => 'yes',
-						'left-choice'  => array( 'value' => 'no',  'label' => __( 'No', 'fw' ) ),
-						'right-choice' => array( 'value' => 'yes', 'label' => __( 'Yes', 'fw' ) ),
-					),
-				),
-			),
-		),
+		'options' => sc_get_animation_fields(),
 	),
-
-	/* ---------------------------------------------------------------- Advanced */
-	'tab_advanced' => array(
+	'tab_advanced'  => array(
 		'title'   => __( 'Advanced', 'fw' ),
 		'type'    => 'tab',
-		'options' => function_exists( 'sc_get_advanced_tab' ) ? sc_get_advanced_tab() : array(),
+		'options' => array(
+			'advanced_settings' => array(
+				'type'    => 'group',
+				'options' => sc_get_advanced_tab(),
+			),
+		),
 	),
 );

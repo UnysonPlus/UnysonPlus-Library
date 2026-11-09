@@ -1,16 +1,36 @@
-<?php if ( ! defined( 'FW' ) ) { die( 'Forbidden' ); }
+<?php if ( ! defined( 'FW' ) ) {
+	die( 'Forbidden' );
+}
 
 /**
- * Enqueue the Instagram feed's own scoped stylesheet.
- *
- * A Library shortcode can be installed EITHER in the plugin (core) OR in a theme's
- * framework-customizations dir, so the extension's get_declared_URI() (which points at
- * the core path) can't locate it. Instead derive the URL from THIS file's own location
- * (`__FILE__`) relative to wp-content — correct wherever the shortcode was downloaded to.
+ * Front-end assets. This library element can live in a theme's framework-customizations (where the Shortcodes
+ * Library installs it), in the update-safe uploads folder (Upload a .zip), or in a plugin, and static.php runs
+ * without the shortcode object, so it works out its own URL from its folder.
  */
-
-$upw_ig_css = dirname( __FILE__ ) . '/static/css/instagram.css';
-if ( file_exists( $upw_ig_css ) ) {
-	$upw_ig_rel = str_replace( wp_normalize_path( WP_CONTENT_DIR ), '', wp_normalize_path( $upw_ig_css ) );
-	wp_enqueue_style( 'upw-shortcode-instagram', content_url( $upw_ig_rel ), array(), '1.0.0' );
+if ( ! function_exists( 'fw_sc_igf_dir_to_uri' ) ) {
+	function fw_sc_igf_dir_to_uri( $dir ) {
+		$dir  = wp_normalize_path( $dir );
+		$maps = array();
+		$up   = wp_upload_dir();
+		if ( ! empty( $up['basedir'] ) ) {
+			$maps[] = array( wp_normalize_path( $up['basedir'] ), rtrim( $up['baseurl'], '/' ) );
+		}
+		$maps[] = array( wp_normalize_path( get_stylesheet_directory() ), rtrim( get_stylesheet_directory_uri(), '/' ) );
+		$maps[] = array( wp_normalize_path( get_template_directory() ), rtrim( get_template_directory_uri(), '/' ) );
+		if ( defined( 'WP_PLUGIN_DIR' ) ) {
+			$maps[] = array( wp_normalize_path( WP_PLUGIN_DIR ), rtrim( plugins_url(), '/' ) );
+		}
+		foreach ( $maps as $m ) {
+			if ( $m[0] !== '' && strpos( $dir, $m[0] ) === 0 ) {
+				return $m[1] . substr( $dir, strlen( $m[0] ) );
+			}
+		}
+		return rtrim( content_url(), '/' );
+	}
 }
+
+$igf_uri = fw_sc_igf_dir_to_uri( dirname( __FILE__ ) );
+$igf_ver = '2.0.0';
+
+wp_enqueue_style( 'fw-shortcode-instagram-feed', $igf_uri . '/static/css/instagram.css', array(), $igf_ver );
+wp_enqueue_script( 'fw-shortcode-instagram-feed', $igf_uri . '/static/js/instagram.js', array(), $igf_ver, true );
