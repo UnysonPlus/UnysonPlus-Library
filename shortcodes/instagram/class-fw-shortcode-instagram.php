@@ -96,7 +96,8 @@ class FW_Shortcode_Instagram extends FW_Shortcode {
 		}
 
 		if ( ! is_array( $data ) ) {
-			return array( 'profile' => array(), 'items' => array(), 'error' => 'fetch_failed' );
+			$why = get_transient( self::T_FRESH . $key . '_err' );
+			return array( 'profile' => array(), 'items' => array(), 'error' => is_string( $why ) && $why !== '' ? $why : 'fetch_failed' );
 		}
 		return $data;
 	}
@@ -135,6 +136,10 @@ class FW_Shortcode_Instagram extends FW_Shortcode {
 			if ( is_array( $old ) ) {
 				$old['error'] = is_wp_error( $profile ) ? $profile->get_error_message() : ( is_wp_error( $media ) ? $media->get_error_message() : 'unknown' );
 				update_option( self::OPT_DATA . $key, $old, false );
+			} else {
+				// No copy yet: keep Instagram's own reason, so the editor sees why instead of "fetch_failed".
+				$why = is_wp_error( $profile ) ? $profile->get_error_message() : ( is_wp_error( $media ) ? $media->get_error_message() : 'no profile returned' );
+				set_transient( self::T_FRESH . $key . '_err', $why, 30 * MINUTE_IN_SECONDS );
 			}
 			delete_transient( self::T_LOCK . $key );
 			return false;
@@ -164,6 +169,7 @@ class FW_Shortcode_Instagram extends FW_Shortcode {
 			$avatar = self::store_image( $avatar, $dir, $key . '-avatar', 160 ) ?: $avatar;
 		}
 
+		delete_transient( self::T_FRESH . $key . '_err' );
 		update_option( self::OPT_DATA . $key, array(
 			'profile'   => array(
 				'username'  => (string) $profile['username'],

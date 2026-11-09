@@ -17,8 +17,8 @@
 .igf__names { display: flex; flex-direction: column; min-width: 0; line-height: 1.25; text-align: left; }
 .igf__name { font-weight: 700; font-size: 1rem; overflow-wrap: anywhere; }
 .igf__handle { font-size: .8125rem; opacity: .65; }
-.igf__follow { display: inline-flex; align-items: center; gap: 8px; padding: 8px 18px; border-radius: 8px; background: #0095f6; color: #fff; font-weight: 600; font-size: .9375rem; line-height: 1.2; text-decoration: none; transition: background-color .2s ease; }
-.igf__follow:hover, .igf__follow:focus-visible { background: #1877f2; color: #fff; }
+.igf__follow { display: inline-flex; align-items: center; gap: 8px; padding: 8px 18px; border-radius: 8px; background: #0064d1; color: #fff; font-weight: 600; font-size: .9375rem; line-height: 1.2; text-decoration: none; transition: background-color .2s ease; }
+.igf__follow:hover, .igf__follow:focus-visible { background: #0052ad; color: #fff; }
 .igf__follow-icon svg { display: block; width: 16px; height: 16px; }
 .igf__follow--preset { padding: revert-layer; background: revert-layer; color: revert-layer; }
 

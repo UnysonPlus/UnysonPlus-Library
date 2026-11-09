@@ -8,14 +8,14 @@
       "title": "Instagram Feed",
       "description": "An Instagram profile header (picture, name, @handle, Follow button) above your posts as a grid or a paged slider with arrows. Live from a connected Business or Creator account (posts and images saved on your site, refreshed in the background, token renewed automatically), or from images you choose. Pages built with v1 keep working.",
       "category": "Social",
-      "version": "2.0.1",
+      "version": "2.0.2",
       "min_core": "2.15.0",
       "requires": [],
       "author": "UnysonPlus",
       "thumb": "instagram/thumb.svg",
       "payload": "instagram/instagram.zip",
-      "sha256": "bb5dc034f5cdbc1b1d44ea01ed8cb67292d6fa1a9b93f980bcf84bfc1b86ec8d",
-      "bytes": 22325
+      "sha256": "a0bebfb27719608574e021fd046b60817929543f7dbd09ffef3801655051f4ff",
+      "bytes": 22695
     }
   }
 }

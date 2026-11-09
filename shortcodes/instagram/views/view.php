@@ -152,6 +152,12 @@ if ( ! $items ) {
 			: ( $error === 'no_token'
 				? __( 'Instagram Feed: paste an access token for a Business or Creator account to show its posts.', 'fw' )
 				: sprintf( __( 'Instagram Feed: no posts could be loaded yet (%s). Check the access token; the feed tries again within 30 minutes.', 'fw' ), $error !== '' ? $error : __( 'no response', 'fw' ) ) );
+		// An access token is long (about 180+ characters, starting IGAA). A short one is usually the
+		// App ID or App Secret copied from the same Meta screen, so say that plainly.
+		$tok = trim( (string) fw_akg( 'source/account/access_token', $atts, '' ) );
+		if ( $mode !== 'manual' && $tok !== '' && strlen( $tok ) < 100 ) {
+			$why .= ' ' . __( 'This does not look like an access token: those start with IGAA and are about 180 characters long. A short code like this is usually the App ID or App Secret. In Meta for Developers, use "Generate token" next to your Instagram account and paste that instead.', 'fw' );
+		}
 		echo '<div ' . fw_attr_to_html( $attr ) . '><p class="igf__note">' . esc_html( $why ) . '</p></div>';
 	}
 	return;
