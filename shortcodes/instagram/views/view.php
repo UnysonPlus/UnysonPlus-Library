@@ -30,6 +30,16 @@ if ( $legacy ) {
 $link_posts = ! ( $legacy && isset( $atts['link_to_post'] ) && 'no' === $atts['link_to_post'] );
 
 // Gap: v2 stores pixels; v1 stored a Gap Scale slug from Theme Settings.
+if ( ! function_exists( 'upw_instagram_no_auto_sizes' ) ) {
+	/** Removes WordPress's "sizes=auto" from feed tiles: auto picks by tile width and ignores the cover crop. */
+	function upw_instagram_no_auto_sizes( $image ) {
+		if ( strpos( $image, 'igf__img' ) === false ) {
+			return $image;
+		}
+		return preg_replace( '/\ssizes="auto,\s*/i', ' sizes="', $image );
+	}
+}
+
 if ( ! function_exists( 'upw_instagram_gap_value' ) ) {
 	/** Resolves a Gap Scale slug (or a plain number of pixels) to a CSS length; '' when none. */
 	function upw_instagram_gap_value( $slug ) {
@@ -188,9 +198,25 @@ $label_id   = 'igf-label-' . substr( md5( wp_json_encode( $attr ) ), 0, 8 );
 			<?php foreach ( $items as $i => $it ) :
 				$link = ! $link_posts ? '' : ( $it['link'] !== '' ? $it['link'] : $profile_url );
 				$alt  = $it['caption'] !== '' ? wp_trim_words( $it['caption'], 18, '…' ) : ( $name !== '' ? sprintf( __( 'Instagram post by %s', 'fw' ), $name ) : __( 'Instagram post', 'fw' ) );
-				$img  = ! empty( $it['attachment_id'] )
-					? wp_get_attachment_image( (int) $it['attachment_id'], 'large', false, array( 'class' => 'igf__img', 'alt' => $alt, 'loading' => 'lazy', 'decoding' => 'async', 'sizes' => '(max-width: 600px) 50vw, 25vw' ) )
-					: '<img class="igf__img" src="' . esc_url( $it['image'] ) . '" alt="' . esc_attr( $alt ) . '" loading="lazy" decoding="async" />';
+				$img = '<img class="igf__img" src="' . esc_url( $it['image'] ) . '" alt="' . esc_attr( $alt ) . '" loading="lazy" decoding="async" />';
+				if ( ! empty( $it['attachment_id'] ) ) {
+					// The tile crops the image to its ratio (object-fit: cover), so a landscape photo in a
+					// portrait tile shows at more than the tile's width. Ask for that width, not the tile's,
+					// and keep WordPress's "sizes=auto" off: auto picks by tile width and the crop goes soft.
+					$meta   = wp_get_attachment_metadata( (int) $it['attachment_id'] );
+					$aspect = ( ! empty( $meta['width'] ) && ! empty( $meta['height'] ) ) ? $meta['width'] / $meta['height'] : 1;
+					$parts  = explode( '-', $ratio );
+					$factor = max( 1, ( (float) $parts[1] / (float) $parts[0] ) * $aspect );
+					$vw     = function ( $c ) use ( $factor ) { return (int) ceil( 100 / max( 1, $c ) * $factor ) . 'vw'; };
+					$sizes  = '(max-width: 599.98px) ' . $vw( $cols_m ) . ', (max-width: 991.98px) ' . $vw( $cols_t ) . ', ' . $vw( $cols );
+					add_filter( 'wp_img_tag_add_auto_sizes', '__return_false' );
+					$img = wp_get_attachment_image( (int) $it['attachment_id'], 'full', false, array( 'class' => 'igf__img', 'alt' => $alt, 'loading' => 'lazy', 'decoding' => 'async', 'sizes' => $sizes ) );
+					remove_filter( 'wp_img_tag_add_auto_sizes', '__return_false' );
+					// The page content filter adds "auto" again later; take it back off these tiles only.
+					if ( ! has_filter( 'wp_content_img_tag', 'upw_instagram_no_auto_sizes' ) ) {
+						add_filter( 'wp_content_img_tag', 'upw_instagram_no_auto_sizes' );
+					}
+				}
 				?>
 				<li class="igf__item">
 					<?php if ( $link !== '' ) : ?><a class="igf__tile" href="<?php echo esc_url( $link ); ?>"<?php echo $target_html; ?>><?php else : ?><span class="igf__tile"><?php endif; ?>
